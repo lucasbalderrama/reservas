@@ -1,3 +1,4 @@
+<!-- a -->
 <?php
 require_once 'config/config.php';
 //Verifica se existe a rota admin
