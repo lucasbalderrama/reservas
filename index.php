@@ -1,6 +1,6 @@
-<!-- a -->
 <?php
 require_once 'config/config.php';
+//Chamar autoload
 //Verifica se existe a rota admin
 $isAdmin = strpos($_SERVER['REQUEST_URI'], '/' . ADMIN) !== false;
 //Comprova se existe GET para criar urls fácil de ler e entender
@@ -32,8 +32,10 @@ if (!empty($array[$metodoIndice]) && $array[$metodoIndice] != '') {
     }
     $parametro = trim($parametro, ',');
 }
+
+require_once 'config/app/Autoload.php';
 //Validar diretório de controllers
-$dirControllers = ($isAdmin) ? 'controllers/admin' . $controller . '.php' : 'controllers/principal' . $controller . '.php' ;
+$dirControllers = ($isAdmin) ? 'controllers/admin/' . $controller . '.php' : 'controllers/principal/' . $controller . '.php';
 if (file_exists($dirControllers)) {
     require_once $dirControllers;
     $controller = new $controller();
